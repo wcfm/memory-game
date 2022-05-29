@@ -1,7 +1,7 @@
 const prepareCards = function () {
   const images = ["clock", "flag", "gift", "lock", "puzzle", "safe"];
   const cards = images.map((image) => ({
-    src: `/images/${image}.png`,
+    src: `./images/${image}.png`,
   }));
 
   return [...cards, ...cards]
