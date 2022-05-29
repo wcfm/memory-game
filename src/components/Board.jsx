@@ -1,21 +1,24 @@
 import Card from "./Card";
 
-const images = ["clock", "flag", "gift", "lock", "puzzle", "safe"];
-
 const Board = function (props) {
-  return (
-    <div className="board">
-      {[...images, ...images].map((img) => {
-        return (
-          <Card
-            card={{ src: img }}
-            state={props.state}
-            dispatch={props.dispatch}
-          />
-        );
-      })}
-    </div>
-  );
+  const cardsList = props.state.cards.map((card) => {
+    const condition =
+      card.id === props.state.choices[0] ||
+      card.id === props.state.choices[1] ||
+      card.matched;
+
+    return (
+      <Card
+        key={card.id}
+        card={card}
+        dispatch={props.dispatch}
+        state={props.state}
+        active={condition}
+      />
+    );
+  });
+
+  return <div className="board">{cardsList}</div>;
 };
 
 export default Board;

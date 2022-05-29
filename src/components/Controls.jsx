@@ -1,6 +1,8 @@
 function Controls(props) {
   const onClickHandler = function () {
-    props.dispatch({ type: "NEW_GAME" });
+    if (!props.state.disabled) {
+      props.dispatch({ type: "NEW_GAME" });
+    }
   };
 
   return (
