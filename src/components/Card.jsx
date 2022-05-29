@@ -5,7 +5,11 @@ const Card = function (props) {
   return (
     <div
       className={toggle ? "card active" : "card"}
-      onClick={() => setToggle((p) => !p)}
+      onClick={() => {
+        setToggle((p) => !p);
+        props.dispatch({type: "HANDLE_CLICK"})
+      }
+    }
     >
       <div className="card__inner">
         <img
