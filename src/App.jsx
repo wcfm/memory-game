@@ -4,7 +4,7 @@ import Board from "./components/Board";
 import Controls from "./components/Controls";
 
 const App = function () {
-  const [state, dispatch] = useReducer(reducer, defaultState);
+  const [state, dispatch] = useReducer(reducer, defaultState());
 
   useEffect(() => {
     dispatch({ type: "NEW_GAME" });

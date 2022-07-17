@@ -9,17 +9,19 @@ const prepareCards = function () {
     .map((card, index) => ({ ...card, id: index + 1, matched: false }));
 };
 
-export const defaultState = {
-  cards: prepareCards(),
-  choices: [null, null],
-  disabled: false,
-  turns: 0,
-};
+export function defaultState() {
+  return {
+    cards: prepareCards(),
+    choices: [null, null],
+    disabled: false,
+    turns: 0,
+  };
+}
 
 export const reducer = function (state, action) {
   switch (action.type) {
     case "NEW_GAME":
-      return defaultState;
+      return defaultState();
     case "HANDLE_CLICK":
       if (!state.choices[0]) {
         return { ...state, choices: [action.payload.id, null] };
